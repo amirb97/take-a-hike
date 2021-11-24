@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take A Hike</title>
+</head>
+<body>
+    <header class="headerContainer">
+        <h1 class="titleContainer">Take A Hike</h1>
+        <form class="selectionFormContainer">
+            <label for="location"></label>
+            <input type="text" placeholder="Where" name="location" id="location" class="form-input">
+            <label for="distance"></label>
+            <input type="number" min="1" max="25" step="1" placeholder="1" name="distance" id="distance" class="form-input">
+            <label for="difficulty"></label>
+            <select id="difficulty" name="difficulty" class="form-input">
+                <option value="easy">Easy</option>
+                <option value="moderate">Moderate</option>
+                <option value="moderatelyStrenuous">Moderately Strenous</option>
+                <option value="strenuous">Strenuous</option>
+                <option value="veryStrenuous">Very Strenuous</option>
+            </select>
+        </form>
+    </header>
+    <section class="trailContainer">
+        <h2 class="trailHeaderContainer">
+            Trail Heads
+        </h2>
+        <ul class="trailSuggestionContainer"></ul>
+    </section>
+    <section class="weatherContainer">
+        <h2 class="weatherHeaderContainer">
+            Weather Forecast
+        </h2>
+        <ul class="weatherForecastContainer"></ul>
+    </section>
+    <footer class="footerContainer">
+        <h3 class="footerTitleContainer">
+            Trademarked by Take a Hike
+        </h3>
+    </footer>
+</body>
+</html>
