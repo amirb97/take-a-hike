@@ -8,40 +8,59 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
-    <header class="headerContainer">
-        <h1 class="titleContainer">Take A Hike</h1>
-        <form class="selectionFormContainer">
-            <label for="location"></label>
-            <input type="text" placeholder="Where" name="location" id="location" class="form-input">
-            <label for="distance"></label>
-            <input type="number" min="1" max="25" step="1" placeholder="1" name="distance" id="distance" class="form-input">
-            <label for="difficulty"></label>
-            <select id="difficulty" name="difficulty" class="form-input">
-                <option value="easy">Easy</option>
-                <option value="moderate">Moderate</option>
-                <option value="moderatelyStrenuous">Moderately Strenous</option>
-                <option value="strenuous">Strenuous</option>
-                <option value="veryStrenuous">Very Strenuous</option>
-            </select>
+<body class="bg-gradient-to-r from-green-700 via-brown-400 to-yellow-600 flex-col">
+    <header class="headerContainer rounded-lg p-6 py-5 flex-col border-8">
+        
+        <img src="./assets/images/hero_image.png" alt="" class="rounded-full border-8">
+        
+        <h1 class="titleContainer"></h1>
+        <img src="./assets/images/Take_A_Hike-removebg-preview.png" alt="" class="rounded-full mx-auto absolute top-0 left-0">
+        <form class="selectionFormContainer text-center flex justify-evenly border-8 ">
+            <div>
+                <label for="location" class=""></label>
+                <input type="text" placeholder="Where" name="location" id="location" class="form-input rounded-md bg-yellow-500">
+            </div>
+            <div>
+                <label for="distance" class=""></label>
+                <input type="number" min="1" max="25" step="1" placeholder="1" name="distance" id="distance" class="form-input rounded-md bg-yellow-500">
+            </div>    
+            <div>
+                <label for="difficulty" class=""></label>
+                <select id="difficulty" name="difficulty" class="form-input rounded-md bg-yellow-500">
+                    <option value="easy">Easy</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="moderatelyStrenuous">Moderately Strenuous</option>
+                    <option value="strenuous">Strenuous</option>
+                    <option value="veryStrenuous">Very Strenuous</option>
+                </select>
+            </div>
         </form>
     </header>
-    <section class="trailContainer">
+    <section class="trailContainer text-center border-8 flex-1">
         <h2 class="trailHeaderContainer">
-            Trail Heads
+            Trails Map
         </h2>
         <ul class="trailSuggestionContainer"></ul>
     </section>
-    <section class="weatherContainer">
+    <section class="weatherContainer text-center border-8">
         <h2 class="weatherHeaderContainer">
             Weather Forecast
         </h2>
-        <ul class="weatherForecastContainer"></ul>
+        <ul class="weatherForecastContainer flex justify-around">
+            <li>Day 1</li>
+            <li>Day 2</li>
+            <li>Day 3</li>
+            <li>Day 4</li>
+            <li>Day 5</li>
+        </ul>
     </section>
-    <footer class="footerContainer">
+    
+    <footer class="footerContainer text-center border-8">
         <h3 class="footerTitleContainer">
             Trademarked by Take a Hike
         </h3>
+        <img class="footerImage" src="./assets/images/footer.png" alt="">
+
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
