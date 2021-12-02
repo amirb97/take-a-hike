@@ -10,19 +10,18 @@
 </head>
 <body class="bg-gray-400 flex-col">
     <section class="heroContainer flex-col">
-        <div class="container">
+        <div class="mx-auto">
             <img src="./assets/images/Take_A_Hike-removebg-preview.png" alt="" class="">
         </div>
-        <div class="container">
-            <form class="selectionFormContainer mx-auto py-20 w-4/6 flex rounded-full bg-grey-200">
-                <div class="bg-yellow-500 rounded-lg">
-                    <label for="location" class="labelName">LOCATION</label>
-                    <input type="text" placeholder="" name="location" id="location" class="form-input rounded-md bg-yellow-200 w-auto h-10">
-                </div>
-                <div class="bg-yellow-500 rounded-lg">
-                    <label for="distance" class="labelName">DISTANCE</label>
-                    <input type="number" min="1" max="100" step="2" placeholder="" name="distance" id="distance" class="form-input rounded-md bg-yellow-200 w-10 h-10">
-                </div>    
+        <div class="mx-auto">
+            <form id="target" class="selectionFormContainer text-center py-20 w-4/6 flex rounded-full bg-grey-200">
+                <div class="bg-gray-400  rounded-lg flex">
+                    <label for="location" class="labelName border-r-4 border-black">LOCATION</label>
+                    <input type="text" placeholder="6201 Yucca St 90028" name="location" id="location" class="labelName form-input rounded-md bg-gray-400 w-64">
+                    <label for="distance" class="labelName border-r-4 border-black">DISTANCE</label>
+                    <input type="text" placeholder="Miles" name="distance" id="distance" class="labelName form-input rounded-md bg-gray-400 w-24 h-10 ">
+                    <input type="submit" value="Search" class="bg-gray-400 form-input labelName rounded-md"></input>
+                </div> 
             </form>
         </div>
     </section>
@@ -33,23 +32,13 @@
         <ul class="trailSuggestionContainer flex justify-around text-lg">
             <div class="card shadow-xl rounded-lg p-5">
                 <div class="map" id="map1"></div>
-                <h5></h5>
-                <p></p>
-                <p></p>
             </div>
             <div class="card shadow-xl rounded-lg p-5">
                 <div class="map" id="map2"></div>
-                <h5></h5>
-                <p></p>
-                <p></p>
             </div>
             <div class="card shadow-xl rounded-lg p-5">
                 <div class="map" id="map3"></div>
-                <h5></h5>
-                <p></p>
-                <p></p>
             </div>
-
         </ul>
     </section>
     <div class="spacer"></div>
@@ -58,7 +47,18 @@
             Weather Forecast
         </h2>
         <div class="weatherForecastContainer flex justify-around text-lg">
+            <div class="weatherCard shadow-xl rounded-lg p-5">
+            </div>
+            <div class="weatherCard shadow-xl rounded-lg p-5">
+            </div>
+            <div class="weatherCard shadow-xl rounded-lg p-5">
+            </div>
+            <div class="weatherCard shadow-xl rounded-lg p-5">
+            </div>
+            <div class="weatherCard shadow-xl rounded-lg p-5">
+            </div>
         </div>
+
     </section>
     
     <footer class="footerContainer">

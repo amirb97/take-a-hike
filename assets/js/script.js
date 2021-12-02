@@ -1,12 +1,13 @@
-var map, map2, map3, map4, map5;
+var map1, map2, map3;
 var service;
 var userLat;
 var userLong;
+let userLocation;
 
 function initMap() {
   var city = new google.maps.LatLng(35.6448,-120.6935);
 
-  map = new google.maps.Map(document.getElementById('map'), {
+  map1 = new google.maps.Map(document.getElementById('map1'), {
       center: city,
       zoom: 18
     });
@@ -20,16 +21,6 @@ function initMap() {
       center: city,
       zoom: 18
     });
-  
-  map4 = new google.maps.Map(document.getElementById('map4'), {
-      center: city,
-      zoom: 18
-    });
-
-  map5 = new google.maps.Map(document.getElementById('map5'), {
-      center: city,
-      zoom: 18
-    });
 
   var request = {
     location: city,
@@ -37,30 +28,33 @@ function initMap() {
     query: 'hiking trail'
   };
 
-  service = new google.maps.places.PlacesService(map);
+  service = new google.maps.places.PlacesService(map1);
   service.textSearch(request, callback);
 }
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
+    for (var i = 1; i < 4; i++) {
       console.log(results[i]);
+      $("<p>Rating: " + results[i-1].rating + "stars</p>").insertAfter("#map" + i);
+      $("<p>Distance:" + (i + .3) + "miles</p>").insertAfter("#map" + i);
+      $("<h2>" + results[i-1].name + "</h2>").insertAfter("#map" + i);
     }
 
-    map.setCenter(results[0].geometry.location);
+    map1.setCenter(results[0].geometry.location);
     map2.setCenter(results[1].geometry.location);
     map3.setCenter(results[2].geometry.location);
-    map4.setCenter(results[3].geometry.location);
-    map5.setCenter(results[4].geometry.location);
   }
 }
 
-$('#btn').click(function() {
-  console.log("Clicked!");
+$("#target").submit(function(e) {
+  e.preventDefault();
+
+  userLocation = $("#location").val();
+
   var geocoder = new google.maps.Geocoder();
-  geocoder.geocode( { 'address': '2927 spring st, paso robles'}, function(results, status) {
+  geocoder.geocode( { 'address': userLocation}, function(results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
-      alert('location : ' + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
       userLat = results[0].geometry.location.lat();
       userLong = results[0].geometry.location.lng();
     } else {
