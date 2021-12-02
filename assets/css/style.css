@@ -26,7 +26,7 @@ footer {
 
 .labelName {
     color: black;
-    font-family: "Architects Daughter"     
+    font-family: "Architects Daughter";
 }
 
 h2 {
@@ -44,7 +44,18 @@ h3 {
     font-family: "Architects Daughter";
     color: #023d0f;
 }
+.weatherCard {
+    transition: .3s;
+    font-family: "Architects Daughter";
+    color: #023d0f;
+    border: black solid 2px;
+    height: 190px;
+    width: 180px;
+}
 .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.weatherCard:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
