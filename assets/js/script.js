@@ -35,9 +35,7 @@ var displayTrailForecast = function(weatherData) {
   
     // creating the elements within
 
-    var forecastContainEl = document.createElement("div");
-    forecastContainEl.classList = "weatherForecastContainer flex justify-around";
-    weatherForecastEl.appendChild(forecastContainEl);
+
     // run for loop to create elements for all 5 days of forecast
     for (var i = 0; i <= 4; i++) {
         var temp = weatherData.daily[i].temp.day;
@@ -48,7 +46,7 @@ var displayTrailForecast = function(weatherData) {
 
         // creating elements
         var containerEl = document.createElement("div");
-        containerEl.classList = "card shadow-xl rounded-lg p-5";
+        containerEl.classList = "weatherCard shadow-xl rounded-lg p-5";
         var titleEl = document.createElement("h5");
         titleEl.textContent = today;
 
@@ -65,7 +63,7 @@ var displayTrailForecast = function(weatherData) {
 
 
 
-        forecastContainEl.appendChild(containerEl);
+        weatherForecastEl.appendChild(containerEl);
         containerEl.appendChild(titleEl);
         containerEl.appendChild(tempEl);
         containerEl.appendChild(descriptEl);
