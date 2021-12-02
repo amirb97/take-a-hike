@@ -1,10 +1,30 @@
-var map;
+var map, map2, map3, map4, map5;
 var service;
 
 function initMap() {
   var city = new google.maps.LatLng(35.6448,-120.6935);
 
   map = new google.maps.Map(document.getElementById('map'), {
+      center: city,
+      zoom: 17
+    });
+  
+  map2 = new google.maps.Map(document.getElementById('map2'), {
+      center: city,
+      zoom: 17
+    });
+
+  map3 = new google.maps.Map(document.getElementById('map3'), {
+      center: city,
+      zoom: 17
+    });
+  
+  map4 = new google.maps.Map(document.getElementById('map4'), {
+      center: city,
+      zoom: 17
+    });
+
+  map5 = new google.maps.Map(document.getElementById('map5'), {
       center: city,
       zoom: 17
     });
@@ -26,6 +46,10 @@ function callback(results, status) {
     }
 
     map.setCenter(results[0].geometry.location);
+    map2.setCenter(results[1].geometry.location);
+    map3.setCenter(results[2].geometry.location);
+    map4.setCenter(results[3].geometry.location);
+    map5.setCenter(results[4].geometry.location);
   }
 }
 
