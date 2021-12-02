@@ -38,7 +38,7 @@ var displayTrailForecast = function(weatherData) {
     dailyTitleEl.textContent = "area weather for the next 5 days: ";
     weatherForecastEl.appendChild(dailyTitleEl);
     var forecastContainEl = document.createElement("div");
-    forecastContainEl.classList = "";
+    forecastContainEl.classList = "weatherForecastContainer flex justify-around";
     weatherForecastEl.appendChild(forecastContainEl);
     // run for loop to create elements for all 5 days of forecast
     for (var i = 0; i <= 4; i++) {
@@ -47,12 +47,13 @@ var displayTrailForecast = function(weatherData) {
         var wind = weatherData.daily[i].wind_speed;
         var humid = weatherData.daily[i].humidity;
         var uvi = weatherData.daily[i].uvi;
+
         // adding a day to the original date
         dd++;
        
         // creating elements
         var containerEl = document.createElement("div");
-        containerEl.classList = "";
+        containerEl.classList = "card shadow-xl rounded-lg p-4 ";
         var titleEl = document.createElement("h5");
         titleEl.textContent = today;
 
