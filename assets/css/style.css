@@ -1,6 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:wght@400;700&family=Shadows+Into+Light&family=Staatliches&display=swap');
+
+.heroContainer {
+    background-image: url("../images/hero_image.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    /* max-height: 700px; */
+}
+
+footer {
+    background-image: url("../images/footer.png");
+    background-size: cover;
+    flex-wrap: wrap;
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    /* position: fixed; */
+    /* margin-top: auto; */
+
+}
+
+.labelName {
+    color: black;
+    font-family: "Architects Daughter"     
+}
+
+h2 {
+    color: #023d0f;
+    font-family: "Architects Daughter";
+}
+
+h3 {
+    color: #023d0f;
+    font-family: "Architects Daughter"
+}
+
+.card {
+    transition: .3s;
+    font-family: "Architects Daughter";
+    color: #023d0f;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 .map {
-  display: inline-block;
-  height: 100%;
-  height: 400px;
-  width: 15%;
-  }
+    width: 280px;
+    height: 200px;
+    border: black solid 2px;
+}
+.spacer {
+    height: 15px;
+}
