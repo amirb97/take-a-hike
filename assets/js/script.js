@@ -48,7 +48,7 @@ var displayTrailForecast = function(weatherData) {
 
         // creating elements
         var containerEl = document.createElement("div");
-        containerEl.classList = "card shadow-xl rounded-lg p-4 ";
+        containerEl.classList = "card shadow-xl rounded-lg p-5";
         var titleEl = document.createElement("h5");
         titleEl.textContent = today;
 
