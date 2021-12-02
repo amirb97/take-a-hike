@@ -1,3 +1,5 @@
+<!-- //bg-gradient-to-r from-green-700 via-brown-400 to-yellow-600  -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,39 +10,64 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
-<body>
-    <header class="headerContainer">
-        <h1 class="titleContainer">Take A Hike</h1>
-        <form class="selectionFormContainer">
-            <label for="location"></label>
-            <input type="text" placeholder="Where" name="location" id="location" class="form-input">
-            <label for="distance"></label>
-            <input type="number" min="1" max="25" step="1" placeholder="1" name="distance" id="distance" class="form-input">
-            <label for="difficulty"></label>
-            <select id="difficulty" name="difficulty" class="form-input">
-                <option value="easy">Easy</option>
-                <option value="moderate">Moderate</option>
-                <option value="moderatelyStrenuous">Moderately Strenuous</option>
-                <option value="strenuous">Strenuous</option>
-                <option value="veryStrenuous">Very Strenuous</option>
-            </select>
-        </form>
-    </header>
-    <section class="trailContainer">
-        <h2 class="trailHeaderContainer">
-            Trail Heads
-        </h2>
+<body class="bg-gray-400 flex-col">
+    <section class="heroContainer flex-col">
+        <div class="container">
+            <img src="./assets/images/Take_A_Hike-removebg-preview.png" alt="" class="">
+        </div>
+        <div class="container">
+            <form class="selectionFormContainer mx-auto py-20 w-4/6 flex rounded-full bg-grey-200">
+                <div class="bg-yellow-500 rounded-lg">
+                    <label for="location" class="labelName">LOCATION</label>
+                    <input type="text" placeholder="" name="location" id="location" class="form-input rounded-md bg-yellow-200 w-auto h-10">
+                </div>
+                <div class="bg-yellow-500 rounded-lg">
+                    <label for="distance" class="labelName">DISTANCE</label>
+                    <input type="number" min="1" max="100" step="2" placeholder="" name="distance" id="distance" class="form-input rounded-md bg-yellow-200 w-10 h-10">
+                </div>    
+            </form>
+        </div>
     </section>
-    <section class="weatherContainer">
-        <h2 class="weatherHeaderContainer">
+    <section class="trailContainer text-center border-t-4 border-green-800 h-auto">
+        <h2 class="trailHeaderContainer text-3xl">
+            Trails Map
+        </h2>
+        <ul class="trailSuggestionContainer flex justify-around text-lg">
+            <div class="card shadow-xl rounded-lg p-5">
+                <div class="map" id="map1"></div>
+                <h5></h5>
+                <p></p>
+                <p></p>
+            </div>
+            <div class="card shadow-xl rounded-lg p-5">
+                <div class="map" id="map2"></div>
+                <h5></h5>
+                <p></p>
+                <p></p>
+            </div>
+            <div class="card shadow-xl rounded-lg p-5">
+                <div class="map" id="map3"></div>
+                <h5></h5>
+                <p></p>
+                <p></p>
+            </div>
+
+        </ul>
+    </section>
+    <div class="spacer"></div>
+    <section class="weatherContainer text-center h-64">
+        <h2 class="weatherHeaderContainer text-3xl">
             Weather Forecast
         </h2>
-        <div class="weatherForecastContainer"></div>
+        <div class="weatherForecastContainer flex justify-around text-lg">
+        </div>
     </section>
+    
     <footer class="footerContainer">
         <h3 class="footerTitleContainer">
             Trademarked by Take a Hike
         </h3>
+        <!-- <img class="footerImage" src="./assets/images/footer.png" alt=""> -->
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
