@@ -1,32 +1,34 @@
 var map, map2, map3, map4, map5;
 var service;
+var userLat;
+var userLong;
 
 function initMap() {
   var city = new google.maps.LatLng(35.6448,-120.6935);
 
   map = new google.maps.Map(document.getElementById('map'), {
       center: city,
-      zoom: 17
+      zoom: 18
     });
   
   map2 = new google.maps.Map(document.getElementById('map2'), {
       center: city,
-      zoom: 17
+      zoom: 18
     });
 
   map3 = new google.maps.Map(document.getElementById('map3'), {
       center: city,
-      zoom: 17
+      zoom: 18
     });
   
   map4 = new google.maps.Map(document.getElementById('map4'), {
       center: city,
-      zoom: 17
+      zoom: 18
     });
 
   map5 = new google.maps.Map(document.getElementById('map5'), {
       center: city,
-      zoom: 17
+      zoom: 18
     });
 
   var request = {
@@ -56,9 +58,11 @@ function callback(results, status) {
 $('#btn').click(function() {
   console.log("Clicked!");
   var geocoder = new google.maps.Geocoder();
-  geocoder.geocode( { 'address': 'los angeles'}, function(results, status) {
+  geocoder.geocode( { 'address': '2927 spring st, paso robles'}, function(results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
       alert('location : ' + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+      userLat = results[0].geometry.location.lat();
+      userLong = results[0].geometry.location.lng();
     } else {
       alert("something went wrong " + status);
     }
