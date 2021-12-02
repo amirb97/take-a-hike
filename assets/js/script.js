@@ -57,6 +57,7 @@ $("#target").submit(function(e) {
     if(status == google.maps.GeocoderStatus.OK) {
       userLat = results[0].geometry.location.lat();
       userLong = results[0].geometry.location.lng();
+      getWeatherInfo(userLat, userLong)
     } else {
       alert("something went wrong " + status);
     }
@@ -81,6 +82,7 @@ var getWeatherInfo = function(lat, lon) {
           }
       })
       .catch(function(error) {
+        //making sure the request to server is valid
           alert("Unable to Connect to Server");
       });
 };
@@ -141,19 +143,5 @@ var displayTrailForecast = function(weatherData) {
     }
 };
 
-// handling the "submit"
-var geoCoordinateHandler = function(lat, lon) {
 
-  // get value from map element
-  var lat = 32.7157//latObject.value.trim();
-  var lon = 117.1611//lonObject.value.trim();
-  if (lat && lon) {
-      getWeatherInfo(lat, lon);
-  } else {
-      alert("No such city exist.");
-  }
-  console.log(lat, lon);
-}
-
-geoCoordinateHandler();
 var weatherForecastEl = document.querySelector(".weatherForecastContainer");
