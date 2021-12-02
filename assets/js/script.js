@@ -34,9 +34,7 @@ var displayTrailForecast = function(weatherData) {
   today = mm + '/' + dd + '/' + yyyy;
   
     // creating the elements within
-    var dailyTitleEl = document.createElement("h4");
-    dailyTitleEl.textContent = "area weather for the next 5 days: ";
-    weatherForecastEl.appendChild(dailyTitleEl);
+
     var forecastContainEl = document.createElement("div");
     forecastContainEl.classList = "weatherForecastContainer flex justify-around";
     weatherForecastEl.appendChild(forecastContainEl);
@@ -96,4 +94,4 @@ var geoCoordinateHandler = function(lat, lon) {
 }
 
 geoCoordinateHandler();
-var weatherForecastEl = document.querySelector(".weatherForecastContainer")
+var weatherForecastEl = document.querySelector(".weatherForecastContainer");
