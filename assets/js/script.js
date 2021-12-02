@@ -28,11 +28,11 @@ var displayTrailForecast = function(weatherData) {
   console.log(weatherData);
   // getting the current date
   var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
+  var dd = String(today.getDate());
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   var yyyy = today.getFullYear();
   today = mm + '/' + dd + '/' + yyyy;
-
+  
     // creating the elements within
     var dailyTitleEl = document.createElement("h4");
     dailyTitleEl.textContent = "area weather for the next 5 days: ";
@@ -48,9 +48,6 @@ var displayTrailForecast = function(weatherData) {
         var humid = weatherData.daily[i].humidity;
         var uvi = weatherData.daily[i].uvi;
 
-        // adding a day to the original date
-        dd++;
-       
         // creating elements
         var containerEl = document.createElement("div");
         containerEl.classList = "card shadow-xl rounded-lg p-4 ";
@@ -77,6 +74,10 @@ var displayTrailForecast = function(weatherData) {
         containerEl.appendChild(windEl);
         containerEl.appendChild(humidEl);
         containerEl.appendChild(uviEl);
+
+    // adding a day to the original date
+       dd++;
+       today = mm + '/' + dd + '/' + yyyy;
     }
 };
 
