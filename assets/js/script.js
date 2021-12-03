@@ -62,6 +62,9 @@ $("#target").submit(function(e) {
       alert("something went wrong " + status);
     }
   });
+
+  $(".trailSuggestionContainer").removeClass("opacity-0");
+  $(".trailSuggestionContainer").addClass("opacity-100");
 });
 
 
