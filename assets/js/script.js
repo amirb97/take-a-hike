@@ -1,6 +1,7 @@
 var map1, map2, map3;
 var service;
 
+// initializes the 3 maps to later display hiking trail information
 function initMap() {
   var initLoc = new google.maps.LatLng(37.4221,-122.0841);
 
@@ -22,6 +23,7 @@ function initMap() {
   service = new google.maps.places.PlacesService(map1);
 }
 
+//gets trails info from the API and centers the maps on each of the three trails
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 1; i < 4; i++) {
@@ -30,29 +32,36 @@ function callback(results, status) {
       $("<h2>" + results[i-1].name + "</h2>").insertAfter("#map" + i);
     }
 
+    //centers map to each trail
     map1.setCenter(results[0].geometry.location);
     map2.setCenter(results[1].geometry.location);
     map3.setCenter(results[2].geometry.location);
   }
 }
 
+//changes the maps to search for trails near the users inputted address
 function changeMap(lat, long) {
   var userLoc = new google.maps.LatLng(lat, long);
 
+  //sets the text search content to be used by the google places library
   var request = {
     location: userLoc,
-    radius: "50",
+    radius: "500",
     query: 'hiking trail'
   };
 
+  //searches for and returns objects matching our request object
   service.textSearch(request, callback);
 }
 
+//listens for button click at top of webpag
 $("#target").submit(function(e) {
   e.preventDefault();
 
+  //gets user location from input form as a string
   let userLocation = $("#location").val();
 
+  //uses google geocoder API to fetch lat and long from users text location input
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': userLocation}, function(results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
@@ -65,6 +74,7 @@ $("#target").submit(function(e) {
     }
   });
 
+  //makes the trails container visible
   $(".trailSuggestionContainer").removeClass("opacity-0");
   $(".trailSuggestionContainer").addClass("opacity-100");
 });
