@@ -1,41 +1,30 @@
 var map1, map2, map3;
 var service;
-var userLat;
-var userLong;
-let userLocation;
 
 function initMap() {
-  var city = new google.maps.LatLng(35.6448,-120.6935);
+  var initLoc = new google.maps.LatLng(37.4221,-122.0841);
 
   map1 = new google.maps.Map(document.getElementById('map1'), {
-      center: city,
+      center: initLoc,
       zoom: 18
     });
   
   map2 = new google.maps.Map(document.getElementById('map2'), {
-      center: city,
-      zoom: 18
+      center: initLoc,
+      zoom: 18,
     });
 
   map3 = new google.maps.Map(document.getElementById('map3'), {
-      center: city,
+      center: initLoc,
       zoom: 18
     });
 
-  var request = {
-    location: city,
-    radius: '50',
-    query: 'hiking trail'
-  };
-
   service = new google.maps.places.PlacesService(map1);
-  service.textSearch(request, callback);
 }
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 1; i < 4; i++) {
-      console.log(results[i]);
       $("<p>Rating: " + results[i-1].rating + " stars</p>").insertAfter("#map" + i);
       $("<p>Distance: " + (i + .3) + "miles</p>").insertAfter("#map" + i);
       $("<h2>" + results[i-1].name + "</h2>").insertAfter("#map" + i);
@@ -47,16 +36,29 @@ function callback(results, status) {
   }
 }
 
+function changeMap(lat, long) {
+  var userLoc = new google.maps.LatLng(lat, long);
+
+  var request = {
+    location: userLoc,
+    radius: "50",
+    query: 'hiking trail'
+  };
+
+  service.textSearch(request, callback);
+}
+
 $("#target").submit(function(e) {
   e.preventDefault();
 
-  userLocation = $("#location").val();
+  let userLocation = $("#location").val();
 
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': userLocation}, function(results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
-      userLat = results[0].geometry.location.lat();
-      userLong = results[0].geometry.location.lng();
+      var userLat = results[0].geometry.location.lat();
+      var userLong = results[0].geometry.location.lng();
+      changeMap(userLat, userLong);
       getWeatherInfo(userLat, userLong)
     } else {
       alert("something went wrong " + status);
@@ -94,7 +96,6 @@ var getWeatherInfo = function(lat, lon) {
 
 var displayTrailForecast = function(weatherData) {
 
-  console.log(weatherData);
   // getting the current date
   var today = new Date();
   var dd = String(today.getDate());
