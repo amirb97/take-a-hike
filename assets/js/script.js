@@ -57,7 +57,8 @@ $("#target").submit(function(e) {
     if(status == google.maps.GeocoderStatus.OK) {
       userLat = results[0].geometry.location.lat();
       userLong = results[0].geometry.location.lng();
-      getWeatherInfo(userLat, userLong)
+      weatherForecastEl.innerHTML = "";
+      getWeatherInfo(userLat, userLong);
     } else {
       alert("something went wrong " + status);
     }
