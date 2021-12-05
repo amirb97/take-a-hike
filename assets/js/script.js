@@ -1,5 +1,6 @@
 var map1, map2, map3;
 var service;
+let userLocation;
 
 // initializes the 3 maps to later display hiking trail information
 function initMap() {
@@ -28,8 +29,8 @@ function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 1; i < 4; i++) {
       $("#map" + i).siblings("h2").text(results[i-1].name);
-      $("#map" + i).siblings("#distance").text("Distance: " + (i + 0.3) + "miles");
       $("#map" + i).siblings("#rating").text("Rating: " + results[i-1].rating + " stars");
+      getDistance(results[i-1].formatted_address, i);
     }
 
     //centers map to each trail
@@ -54,12 +55,33 @@ function changeMap(lat, long) {
   service.textSearch(request, callback);
 }
 
+//gets the distance from the user's inputted location and each hiking trail in miles
+function getDistance(destination, i) {
+  var service = new google.maps.DistanceMatrixService();
+  service.getDistanceMatrix(
+    {
+      origins: [userLocation],
+      destinations: [destination],
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
+      avoidHighways: false,
+      avoidTolls: false,
+    }, callbackMatrix);
+
+    //takes the API response and parses out the distance in miles, then changes the text content of the html tag
+    function callbackMatrix(response, status) {
+      if (status == 'OK') {
+        $("#map" + i).siblings("#distance").text("Distance: " + response.rows[0].elements[0].distance.text + "miles");
+      }
+    }
+}
+
 //listens for button click at top of webpag
 $("#target").submit(function(e) {
   e.preventDefault();
 
   //gets user location from input form as a string
-  let userLocation = $("#location").val();
+  userLocation = $("#location").val();
 
   //uses google geocoder API to fetch lat and long from users text location input
   var geocoder = new google.maps.Geocoder();
