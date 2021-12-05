@@ -27,9 +27,9 @@ function initMap() {
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 1; i < 4; i++) {
-      $("<p>Rating: " + results[i-1].rating + " stars</p>").insertAfter("#map" + i);
-      $("<p>Distance: " + (i + .3) + "miles</p>").insertAfter("#map" + i);
-      $("<h2>" + results[i-1].name + "</h2>").insertAfter("#map" + i);
+      $("#map" + i).siblings("h2").text(results[i-1].name);
+      $("#map" + i).siblings("#distance").text("Distance: " + (i + 0.3) + "miles");
+      $("#map" + i).siblings("#rating").text("Rating: " + results[i-1].rating + " stars");
     }
 
     //centers map to each trail
