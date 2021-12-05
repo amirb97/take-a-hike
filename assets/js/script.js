@@ -1,68 +1,103 @@
 var map1, map2, map3;
 var service;
-var userLat;
-var userLong;
 let userLocation;
 
+// initializes the 3 maps to later display hiking trail information
 function initMap() {
-  var city = new google.maps.LatLng(35.6448,-120.6935);
+  var initLoc = new google.maps.LatLng(37.4221,-122.0841);
 
   map1 = new google.maps.Map(document.getElementById('map1'), {
-      center: city,
+      center: initLoc,
       zoom: 18
     });
   
   map2 = new google.maps.Map(document.getElementById('map2'), {
-      center: city,
-      zoom: 18
+      center: initLoc,
+      zoom: 18,
     });
 
   map3 = new google.maps.Map(document.getElementById('map3'), {
-      center: city,
+      center: initLoc,
       zoom: 18
     });
 
-  var request = {
-    location: city,
-    radius: '50',
-    query: 'hiking trail'
-  };
-
   service = new google.maps.places.PlacesService(map1);
-  service.textSearch(request, callback);
 }
 
+//gets trails info from the API and centers the maps on each of the three trails
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 1; i < 4; i++) {
-      console.log(results[i]);
-      $("<p>Rating: " + results[i-1].rating + " stars</p>").insertAfter("#map" + i);
-      $("<p>Distance: " + (i + .3) + "miles</p>").insertAfter("#map" + i);
-      $("<h2>" + results[i-1].name + "</h2>").insertAfter("#map" + i);
+      $("#map" + i).siblings("h2").text(results[i-1].name);
+      $("#map" + i).siblings("#rating").text("Rating: " + results[i-1].rating + " stars");
+      getDistance(results[i-1].formatted_address, i);
     }
 
+    //centers map to each trail
     map1.setCenter(results[0].geometry.location);
     map2.setCenter(results[1].geometry.location);
     map3.setCenter(results[2].geometry.location);
   }
 }
 
+//changes the maps to search for trails near the users inputted address
+function changeMap(lat, long) {
+  var userLoc = new google.maps.LatLng(lat, long);
+
+  //sets the text search content to be used by the google places library
+  var request = {
+    location: userLoc,
+    radius: "500",
+    query: 'hiking trail'
+  };
+
+  //searches for and returns objects matching our request object
+  service.textSearch(request, callback);
+}
+
+//gets the distance from the user's inputted location and each hiking trail in miles
+function getDistance(destination, i) {
+  var service = new google.maps.DistanceMatrixService();
+  service.getDistanceMatrix(
+    {
+      origins: [userLocation],
+      destinations: [destination],
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.IMPERIAL,
+      avoidHighways: false,
+      avoidTolls: false,
+    }, callbackMatrix);
+
+    //takes the API response and parses out the distance in miles, then changes the text content of the html tag
+    function callbackMatrix(response, status) {
+      if (status == 'OK') {
+        $("#map" + i).siblings("#distance").text("Distance: " + response.rows[0].elements[0].distance.text + "miles");
+      }
+    }
+}
+
+//listens for button click at top of webpag
 $("#target").submit(function(e) {
   e.preventDefault();
 
+  //gets user location from input form as a string
   userLocation = $("#location").val();
 
+  //uses google geocoder API to fetch lat and long from users text location input
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode( { 'address': userLocation}, function(results, status) {
     if(status == google.maps.GeocoderStatus.OK) {
-      userLat = results[0].geometry.location.lat();
-      userLong = results[0].geometry.location.lng();
+      var userLat = results[0].geometry.location.lat();
+      var userLong = results[0].geometry.location.lng();
+      weatherForecastEl.innerHTML = "";
+      changeMap(userLat, userLong);
       getWeatherInfo(userLat, userLong)
     } else {
       alert("something went wrong " + status);
     }
   });
 
+  //makes the trails container visible
   $(".trailSuggestionContainer").removeClass("opacity-0");
   $(".trailSuggestionContainer").addClass("opacity-100");
 });
@@ -94,7 +129,6 @@ var getWeatherInfo = function(lat, lon) {
 
 var displayTrailForecast = function(weatherData) {
 
-  console.log(weatherData);
   // getting the current date
   var today = new Date();
   var dd = String(today.getDate());

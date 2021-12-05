@@ -1,5 +1,7 @@
+/* importing google font */
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:wght@400;700&family=Shadows+Into+Light&family=Staatliches&display=swap');
 
+/* styling for the hero container */
 .heroContainer {
     background-image: url("../images/hero_image.png");
     background-size: cover;
@@ -11,6 +13,7 @@
     /* max-height: 700px; */
 }
 
+/* styling for the footer */
 footer {
     background-image: url("../images/footer.png");
     background-size: cover;
@@ -24,11 +27,25 @@ footer {
 
 }
 
+/* class specific for the labels */
 .labelName {
     color: black;
     font-family: "Architects Daughter";
 }
+/*  */
+.locationName {
+    font-family: "Architects Daughter"
+}
+.labelName:hover {
+    color: white;
+}
+.submitLabel:hover {
+    background-color: #023d0f;
+}
+.addressLabel:hover {
+    background-color: #023d0f;
 
+}
 h2 {
     color: #023d0f;
     font-family: "Architects Daughter";
@@ -50,7 +67,7 @@ h3 {
     color: #023d0f;
     border: black solid 2px;
     height: 190px;
-    width: 180px;
+    width: 190px;
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
