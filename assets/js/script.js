@@ -71,7 +71,7 @@ function getDistance(destination, i) {
     //takes the API response and parses out the distance in miles, then changes the text content of the html tag
     function callbackMatrix(response, status) {
       if (status == 'OK') {
-        $("#map" + i).siblings("#distance").text("Distance: " + response.rows[0].elements[0].distance.text + "miles");
+        $("#map" + i).siblings("#distance").text("Distance: " + response.rows[0].elements[0].distance.text);
       }
     }
 }
