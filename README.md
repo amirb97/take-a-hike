@@ -21,4 +21,6 @@
 
 [Take a Hike](https://amirb97.github.io/take-a-hike/)
 
+[Presentation](https://docs.google.com/presentation/d/1tsNCTL9EaEm4sWFblhEPiNq1Gi5u49_YcF6NIm5iYUc/edit?usp=sharing)
+
 Built by: Adam Burpee, Amir Bahmani, Alan Lin
