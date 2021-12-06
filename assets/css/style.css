@@ -1,7 +1,8 @@
-/* importing google font */
+/* This Style Sheet is built in conjunction with Tailwind CSS Framework*/
+/* For items not intuitive in Tailwind, we used straight CSS below */
+
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans:wght@400;700&family=Shadows+Into+Light&family=Staatliches&display=swap');
 
-/* styling for the hero container */
 .heroContainer {
     background-image: url("../images/hero_image.png");
     background-size: cover;
@@ -10,29 +11,22 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: flex-start;
-    /* max-height: 700px; */
 }
 
-/* styling for the footer */
 footer {
     background-image: url("../images/footer.png");
     background-size: cover;
     flex-wrap: wrap;
-    /* position: absolute; */
     bottom: 0;
     width: 100%;
     height: 5rem;
-    /* position: fixed; */
-    /* margin-top: auto; */
-
 }
 
-/* class specific for the labels */
 .labelName {
     color: black;
     font-family: "Architects Daughter";
 }
-/*  */
+
 .locationName {
     font-family: "Architects Daughter"
 }
