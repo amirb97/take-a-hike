@@ -78,3 +78,24 @@ h3 {
 .spacer {
     height: 15px;
 }
+
+@media screen and (max-width: 950px) {
+    .weatherForecastContainer {
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .weatherForecastContainer {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 775px) {
+    .weatherForecastContainer {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .weatherForecastContainer {
+        font-size: 10px;
+    }
+}
